@@ -8,6 +8,22 @@ return {
       -- refer to the configuration section below
     },
     cmd = { "TodoQuickFix" },
+    lazy = false,
+  },
+  --  {
+  -- "mg979/vim-visual-multi",
+  --opts = {},
+  --    lazy = false,
+  --  },
+  --  {
+  -- "terrortylor/nvim-comment",
+  --    opts = {},
+  --    lazy = false,
+  --  },
+  {
+    "iamcco/markdown-preview.nvim",
+    config = function() vim.fn["mkdp#util#install"]() end,
+    lazy = false,
   },
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax

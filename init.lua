@@ -81,17 +81,17 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-    
-		-- Toggle Neotree on Startup
-		vim.api.nvim_create_augroup("neotree", {})
-    vim.api.nvim_create_autocmd("UiEnter", {
-      desc = "Open Neotree automatically",
-      group = "neotree",
-      callback = function()
-        if vim.fn.argc() == 0 and not vim.fn.exists "s:std_in" then
-          vim.cmd "Neotree toggle"
-        end
-      end,
-    })  
+    if vim.g.neovide then
+      -- Put anything you want to happen only in Neovide here
+      -- Resize Neovide font
+      local map = vim.keymap.set
+      local function neovideScale(amount)
+        local temp = vim.g.neovide_scale_factor + amount
+        if temp < 0.5 then return end
+        vim.g.neovide_scale_factor = temp
+      end
+      map("n", "<C-=>", function() neovideScale(0.1) end)
+      map("n", "<C-->", function() neovideScale(-0.1) end)
+    end
   end,
 }
